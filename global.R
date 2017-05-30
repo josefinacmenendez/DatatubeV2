@@ -33,8 +33,10 @@ plot_heatmap <- function(diff_exp_data){
   plot <- ggplot(data = diff_exp_data, aes(x = day, y = id))+
   ggtitle("Differential expression in H. glaberrima contigs in days 2, 12 and 20 post-injury of the radial nerve") +
   geom_tile(aes(fill=log2FoldChange)) +
-  geom_text(aes(label = log2FoldChange)) +
-  scale_fill_gradient(low="white",high="steelblue",name="Differential expression") +
+  #geom_text(aes(label = log2FoldChange)) +
+  geom_text(aes(label = log2FoldChange), colour = "#999999") +
+  #scale_fill_gradient(low="white",high="steelblue",name="Differential expression") +
+  scale_fill_gradient2(low='red',mid = 'black',high = 'green', name= 'Differential expression') + 
   theme(plot.title = element_text(size = 18),
         
         legend.position = 'bottom', 
