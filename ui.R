@@ -17,8 +17,8 @@ shinyUI(fluidPage(
     mainPanel(
       conditionalPanel(
         condition = "input.plot_selection == 'view ranked contigs'",
-          actionButton("prevButton" , "Previous"),
-          actionButton("nextButton" , "Next")),
+        actionButton("prevButton" , "Previous"),
+        actionButton("nextButton" , "Next")),
       plotOutput("heatmap")
     )
   )

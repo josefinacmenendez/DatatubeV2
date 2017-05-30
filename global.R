@@ -1,5 +1,6 @@
 #global.R
 library(shiny)
+library(shinydashboard)
 library(functional)
 library(ggplot2)
 library(plyr)

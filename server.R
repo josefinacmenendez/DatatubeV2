@@ -11,6 +11,17 @@ shinyServer(function(input, output, session) {
         plot <- plot_heatmap_subset(input$contigs)
         plot(plot)
       }, height = 700, width = 1000)
+      output$dld <- downloadHandler(
+        filename = function(){
+          paste("heatmap", "tiff", sep = ".")
+        },
+        content = function(filename) {
+          tiff(filename, height = 700, width = 1000)
+          plot <- plot_heatmap_subset(input$contigs)
+          plot(plot)
+          dev.off()
+        }
+      )
     }
     else if (input$plot_selection == 'view ranked contigs'){ 
       observeEvent(input$prevButton, {
@@ -37,6 +48,18 @@ shinyServer(function(input, output, session) {
         plot <- plot_heatmap_subset(ranked_contigs[indexes$from:indexes$to])
         plot(plot)
         }, height = 700, width = 1000)
+      output$dld <- downloadHandler(
+        filename = function(){
+          paste("heatmap", "tiff", sep = ".")
+        },
+        content = function(filename) {
+          tiff(filename, height = 700, width = 1000)
+          plot <- plot_heatmap_subset(ranked_contigs[indexes$from:indexes$to])
+          plot(plot)
+          dev.off()
+        }
+      )
       }
     })
+
 })
